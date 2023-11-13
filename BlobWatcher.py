@@ -1,5 +1,7 @@
-from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
+import time
 import os
+
+from azure.storage.blob import BlobServiceClient
 
 def download_blob(blob_service_client, container_name, blob_name, destination_path):
     blob_client = blob_service_client.get_blob_client(container=container_name, blob=blob_name)
@@ -28,18 +30,22 @@ def main():
     # Create a ContainerClient
     container_client = blob_service_client.get_container_client(container_name)
 
-    # List existing files in the local directory
-    local_files = os.listdir(local_directory)
+    while True:
+        # List existing files in the local directory
+        local_files = os.listdir(local_directory)
 
-    # List blobs in the Azure Blob Storage container
-    blobs = list_blobs(blob_service_client, container_name)
+        # List blobs in the Azure Blob Storage container
+        blobs = list_blobs(blob_service_client, container_name)
 
-    # Check for new .zip files and download them if they don't exist locally
-    for blob_name in blobs:
-        if blob_name.endswith(".zip") and blob_name not in local_files:
-            destination_path = os.path.join(local_directory, blob_name)
-            download_blob(blob_service_client, container_name, blob_name, destination_path)
-            print(f"Downloaded: {blob_name} to {destination_path}")
+        # Check for new .zip files and download them if they don't exist locally
+        for blob_name in blobs:
+            if blob_name.endswith(".zip") and blob_name not in local_files:
+                destination_path = os.path.join(local_directory, blob_name)
+                download_blob(blob_service_client, container_name, blob_name, destination_path)
+                print(f"Downloaded: {blob_name} to {destination_path}")
+
+        # Introduce a delay before checking for new files again
+        time.sleep(60)  # Sleep for 60 seconds (adjust as needed)
 
 if __name__ == "__main__":
     main()
