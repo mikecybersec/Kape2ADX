@@ -16,8 +16,8 @@ This is a project for automating your KAPE process. Currently, this project take
 
 ### Run the project!
 To run the project, run these in the following order:
-- ./processor.sh
-- python3 watch.py
+- ```./processor.sh```
+- ```python3 watch.py```
 
 
 
