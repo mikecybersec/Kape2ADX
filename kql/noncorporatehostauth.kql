@@ -1,0 +1,6 @@
+DFIRCase01
+| where EventId == 4776
+| where PayloadData2 !contains "INSERT YOUR WORKSTATION NAMING CONVENTION I.E. 'ACME-DESKTOP'"
+| where ['PayloadData2'] != "Workstation: "
+| project TimeCreated, EventId, Channel, Computer, PayloadData1, PayloadData2
+| sort by TimeCreated asc
