@@ -8,9 +8,9 @@ This is a project for automating your KAPE process. Currently, this project take
 - Azure storage account and container
 
 ### Install prerequisites on VM
-```apt install python3 python3-pip unzip inotify-tools -y```<br>
-```pip install azure-storage-blob```<br>
-```wget "https://aka.ms/downloadazcopy-v10-linux" && tar -xvf downloadazcopy-v10-linux && rm downloadazcopy-v10-linux```<br>
+- ```apt install python3 python3-pip unzip inotify-tools -y```<br>
+- ```pip install azure-storage-blob```<br>
+- ```wget "https://aka.ms/downloadazcopy-v10-linux" && tar -xvf downloadazcopy-v10-linux && rm downloadazcopy-v10-linux```<br>
 Clone this repo and then:
 ```chmod 777 processor.sh```
 
