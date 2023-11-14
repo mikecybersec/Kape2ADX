@@ -1,4 +1,8 @@
 # Kape2ADX
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+
 This is a project for automating your KAPE process. The project performs the following steps:
 - Monitors Azure Blob container for new KAPE .zips
 - Automatically pulls them down for processing with Log2Timeline/PSort (Auto checks for .zips already processed)
