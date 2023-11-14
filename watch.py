@@ -1,3 +1,6 @@
+# Edit the accountname and accountkey on line 20
+# Edit the container name on line 24
+
 import time
 import os
 
@@ -16,13 +19,13 @@ def list_blobs(blob_service_client, container_name):
 
 def main():
     # Azure Storage Account connection string
-    connection_string = "DefaultEndpointsProtocol=https;AccountName=INSERTACCOUNTNAMEHERE;AccountKey=INSERTKEYHERE;EndpointSuffix=core.windows.net"
+    connection_string = "DefaultEndpointsProtocol=https;AccountName=ACCOUNTNAMEHERE;AccountKey=ACCOUNTKEYHERE;EndpointSuffix=core.windows.net"
 
     # Azure Blob Storage container name
-    container_name = "INSERTCONTAINERNAMEHERE"
+    container_name = "CONTAINERNAMEHERE"
 
     # Local directory to save downloaded files
-    local_directory = "INSERTLOCALPATHHERE"
+    local_directory = "/opt/kapetriages/"
 
     # Create a BlobServiceClient
     blob_service_client = BlobServiceClient.from_connection_string(connection_string)
