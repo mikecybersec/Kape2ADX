@@ -25,7 +25,7 @@ The outputted super timelines can be ingested in Azure Data Explorer where you c
 ### Run the project!
 To run the project, run these in the following order:
 - ```./processor.sh```
-- ```python3 watch.py```
+- ```python3 watchblob.py```
 
 
 
