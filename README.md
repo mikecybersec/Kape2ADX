@@ -1,5 +1,10 @@
 # Kape2ADX
-This is a project for automating your KAPE process. Currently, this project takes KAPE .zips found in blob storage, turns the artefacts into super timelines, then uploads the .csv back to Blob. You can optionally connect blob as a data source to Azure Data Explorer to then do forensics via KQL.
+This is a project for automating your KAPE process. The project performs the following steps:
+- Monitors Azure Blob container for new KAPE .zips
+- Automatically pulls them down for processing with Log2Timeline/PSort (Auto checks for .zips already processed)
+- Uploads the .csv super timeline to Blob container
+
+The outputted super timelines can be ingested in Azure Data Explorer where you can then do DFIR with KQL. Some KQL queries have been provided under folder 'KQL'.
 
 ![alt text](https://i.imgur.com/BiSSO7m.png)
 
