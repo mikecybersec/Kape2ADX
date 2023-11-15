@@ -24,6 +24,7 @@ The outputted super timelines can be ingested in Azure Data Explorer where you c
 - Azure storage account and container
 
 ### Install prerequisites on VM
+- ```sudo apt-get update```<br>
 - ```apt install python3 python3-pip unzip inotify-tools -y```<br>
 - ```pip install azure-storage-blob```<br>
 - ```wget "https://aka.ms/downloadazcopy-v10-linux" && tar -xvf downloadazcopy-v10-linux && rm downloadazcopy-v10-linux```<br>
@@ -33,7 +34,7 @@ The outputted super timelines can be ingested in Azure Data Explorer where you c
 ### Run the project!
 To run the project, run these in the following order:
 - ```./processor.sh```
-- ```python3 watchblob.py```
+- ```sudo python3 watchblob.py```
 
 
 
