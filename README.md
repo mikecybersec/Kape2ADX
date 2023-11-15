@@ -25,6 +25,7 @@ The outputted super timelines can be ingested in Azure Data Explorer where you c
 
 ### Install prerequisites on VM
 - ```sudo apt-get update```<br>
+- ```Install log2timeline```<br>
 - ```apt install python3 python3-pip unzip inotify-tools -y```<br>
 - ```pip install azure-storage-blob```<br>
 - ```wget "https://aka.ms/downloadazcopy-v10-linux" && tar -xvf downloadazcopy-v10-linux && rm downloadazcopy-v10-linux```<br>
