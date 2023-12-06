@@ -32,8 +32,9 @@ The outputted super timelines can be ingested in Azure Data Explorer where you c
 - ```git clone urlhere```
 - ```chmod 777 processor.sh```
 
-### Edit variables in the scripts
+### Edit variables in the scripts & Create 'Triage' directory
 - You will need to provide the scripts with some keys variables such as; SAS URI token for Azure storage
+- mkdir '/opt/kapetriages/'
 
 ### Run the project!
 To run the project, run these in the following order:
