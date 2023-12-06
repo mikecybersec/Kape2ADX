@@ -35,7 +35,7 @@ I'd like to acknowledge and thank the following for contributing either knowledg
 - ```apt install python3 python3-pip unzip inotify-tools -y```<br>
 - ```pip install azure-storage-blob```<br>
 - ```wget "https://aka.ms/downloadazcopy-v10-linux" && tar -xvf downloadazcopy-v10-linux && rm downloadazcopy-v10-linux```<br>
-- ```git clone urlhere```
+- ```git clone https://github.com/mikecybersec/Kape2ADX```
 - ```chmod 777 processor.sh```
 
 ### 3. Edit variables in the scripts & Create 'Triage' directory
