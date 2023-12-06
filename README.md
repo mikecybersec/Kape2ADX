@@ -19,6 +19,8 @@ The outputted super timelines can be ingested in Azure Data Explorer where you c
 ## Inspiration & Acknowledgement
 I'd like to acknowledge and thank the following for contributing either knowledge or inspiring me to create this:
 
+- @Reconinfosec - https://github.com/ReconInfoSec/velociraptor-to-timesketch - This project is very similar, however, doesn't use the tech I'm used to using! Awesome project that inspired this.
+- https://www.linkedin.com/in/sebh24/ - Providing advice around packaging up .py scripts for a later version.
 
 ## Getting Started
 
