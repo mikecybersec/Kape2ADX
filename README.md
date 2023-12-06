@@ -3,11 +3,11 @@
 
 ## Project Introduction
 This is a project for automating your KAPE process. The project performs the following steps:
-- Monitors Azure Blob container for new KAPE .zips
+- Continously monitors Azure Blob container for new KAPE .zips landing
 - Automatically pulls them down for processing with Log2Timeline/PSort (Auto checks for .zips already processed)
+- Log files of each run is outputted to /opt/
 - Uploads the .csv super timeline to Blob container
-
-The outputted super timelines can be ingested in Azure Data Explorer where you can then do DFIR with KQL. Some KQL queries have been provided under folder 'KQL'.
+- You can then import this super timeline to Azure Data Explorer and run the provided KQL queries to expedite your forensics triage
 
 ![alt text](https://i.imgur.com/BiSSO7m.png)
 
