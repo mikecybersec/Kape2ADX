@@ -41,6 +41,7 @@ I'd like to acknowledge and thank the following for contributing either knowledg
 ### 3. Edit variables in the scripts & Create 'Triage' directory
 - You will need to provide 'watchblob.py' script with the following variables: Azure account name, Azure account key, Container name. You can find these by using CTRL + F "HERE" and replacing the placeholders.
 - mkdir '/opt/kapetriages/'
+- mkdir '/opt/azcopy_linux_amd64_10.21.2'
 
 ### 4. Run the project!
 To run the project, run these in the following order:
