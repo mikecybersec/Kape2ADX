@@ -32,6 +32,9 @@ The outputted super timelines can be ingested in Azure Data Explorer where you c
 - ```git clone urlhere```
 - ```chmod 777 processor.sh```
 
+### Edit variables in the scripts
+- You will need to provide the scripts with some keys variables such as; SAS URI token for Azure storage
+
 ### Run the project!
 To run the project, run these in the following order:
 - ```./processor.sh```
