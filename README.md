@@ -51,6 +51,7 @@ To run the project, run these in the following order:
 ## Features to add
 - Ability to work with passworded .zip triages.
 - Secure variables rather than storing them in code.
+- I'm aiming to make the setup steps more slick, perhaps VM templates for Azure with pre-reqs already installed etc? Open to suggestions on how to better package this up :) 
   
 ## Disclaimer
 This is a personal project, I recommend you take this project, test it and amend it to suit your requirements. I hold no responsibility for any adverse affects on data or infrastructure as a result of running this project.
