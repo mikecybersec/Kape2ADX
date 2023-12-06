@@ -1,12 +1,6 @@
 # Kape2ADX
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-## Technologies
-![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
-![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)
-
-
-
+## Project Introduction
 This is a project for automating your KAPE process. The project performs the following steps:
 - Monitors Azure Blob container for new KAPE .zips
 - Automatically pulls them down for processing with Log2Timeline/PSort (Auto checks for .zips already processed)
@@ -15,6 +9,12 @@ This is a project for automating your KAPE process. The project performs the fol
 The outputted super timelines can be ingested in Azure Data Explorer where you can then do DFIR with KQL. Some KQL queries have been provided under folder 'KQL'.
 
 ![alt text](https://i.imgur.com/BiSSO7m.png)
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+## Technologies
+![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
+![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)
+
 
 ## Inspiration & Acknowledgement
 I'd like to acknowledge and thank the following for contributing either knowledge or inspiring me to create this:
