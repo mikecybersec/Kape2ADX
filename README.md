@@ -1,4 +1,5 @@
 # Kape2ADX
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## Project Introduction
 This is a project for automating your KAPE process. The project performs the following steps:
@@ -10,7 +11,7 @@ The outputted super timelines can be ingested in Azure Data Explorer where you c
 
 ![alt text](https://i.imgur.com/BiSSO7m.png)
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 ## Technologies
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
 ![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)
