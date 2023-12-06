@@ -16,11 +16,14 @@ The outputted super timelines can be ingested in Azure Data Explorer where you c
 
 ![alt text](https://i.imgur.com/BiSSO7m.png)
 
+## Inspiration & Acknowledgement
+I'd like to acknowledge and thank the following for contributing either knowledge or inspiring me to create this:
+
 
 ## Getting Started
 
 ### Setup Virtual Machine
-- Virtual Machine to run the project (Ubuntu server 20.04) - I've tested this project on 8 vCPUs and 16GB RAM with 4-6 KAPE collections simultaneously, this takes about 2-2.5hrs to run,
+- Virtual Machine to run the project (Ubuntu server 20.04) - I've tested this project on 8 vCPUs and 16GB RAM with 4-6 KAPE collections simultaneously, this takes about 2-2.5hrs to run.
 - Azure storage account and container
 
 ### Install prerequisites on VM
@@ -33,7 +36,7 @@ The outputted super timelines can be ingested in Azure Data Explorer where you c
 - ```chmod 777 processor.sh```
 
 ### Edit variables in the scripts & Create 'Triage' directory
-- You will need to provide the scripts with some keys variables such as; SAS URI token for Azure storage
+- You will need to provide 'watchblob.py' script with the following variables: Azure account name, Azure account key, Container name. You can find these by using CTRL + F "HERE" and replacing the placeholders.
 - mkdir '/opt/kapetriages/'
 
 ### Run the project!
@@ -41,6 +44,12 @@ To run the project, run these in the following order:
 - ```./processor.sh```
 - ```sudo python3 watchblob.py```
 
+## Features to add
+- Ability to work with passworded .zip triages.
+- Secure variables rather than storing them in code.
+  
+## Disclaimer
+This is a personal project, I recommend you take this project, test it and amend it to suit your requirements. I hold no responsibility for any adverse affects on data or infrastructure as a result of running this project.
 
 
 
