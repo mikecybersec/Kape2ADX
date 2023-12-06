@@ -20,7 +20,7 @@ The outputted super timelines can be ingested in Azure Data Explorer where you c
 ## Getting Started
 
 ### Setup Virtual Machine
-- Virtual Machine to run the project (Ubuntu server 20.04)
+- Virtual Machine to run the project (Ubuntu server 20.04) - I've tested this project on 8 vCPUs and 16GB RAM with 4-6 KAPE collections simultaneously, this takes about 2-2.5hrs to run,
 - Azure storage account and container
 
 ### Install prerequisites on VM
