@@ -1,46 +1,53 @@
-# Edit SAS URI on Line 30
+import time
+import os
 
-# This is the dir that will be 'watched' for new files i.e. DC01.zip
-TRIAGE_DIR="/opt/kapetriages/"
-AZCOPYDIR="/opt/azcopy_linux_amd64_10.21.2"
+from azure.storage.blob import BlobServiceClient
 
-process_triage () {
-    #Takes in the filename as arg1
-    ZIP=$1
-    echo "Got Zip name: $ZIP"
-    
-    # Get folder name
-    DEVICETOTRIAGE=${ZIP%.*}
-    echo "Got folder name: $DEVICETOTRIAGE"
+def download_blob(blob_service_client, container_name, blob_name, destination_path):
+    blob_client = blob_service_client.get_blob_client(container=container_name, blob=blob_name)
+    with open(destination_path, "wb") as f:
+        data = blob_client.download_blob()
+        f.write(data.readall())
 
-    echo "Sleeping 30 to wait for file to finalise downloading"
-    sleep 30
-    echo "Slept, continuing"
+def list_blobs(blob_service_client, container_name):
+    container_client = blob_service_client.get_container_client(container_name)
+    blobs = container_client.list_blobs()
+    return [blob.name for blob in blobs]
 
-    # Unzip and use the zip name as the folder name
-    echo A | unzip /opt/kapetriages/$ZIP -d /opt/kapetriages/$DEVICETOTRIAGE
-    echo "Triage zip extracted to: /opt/kapetriages/$DEVICETOTRIAGE/"
-    
-    # Run log2timeline and generate Plaso file
-    log2timeline.py --storage-file /opt/kapetriages/$DEVICETOTRIAGE/$DEVICETOTRIAGE.plaso /opt/kapetriages/$DEVICETOTRIAGE/
+def main():
+    # Azure Storage Account connection string
+    connection_string = "DefaultEndpointsProtocol=https;AccountName=ACCOUNTNAMEHERE;AccountKey=ACCOUNTKEYHERE;EndpointSuffix=core.windows.net"
 
-    echo "Finished processing $DEVICETOTRIAGE via Plaso, now producing timeline via PSort."
+    # Azure Blob Storage container name
+    container_name = "CONTAINERNAMEHERE"
 
-    psort.py -o l2tcsv -w /opt/kapetriages/$DEVICETOTRIAGE/timeline_$DEVICETOTRIAGE.csv /opt/kapetriages/$DEVICETOTRIAGE/$DEVICETOTRIAGE.plaso
+    # Local directory to save downloaded files
+    local_directory = "/opt/kapetriages/"
 
-    Copy timeline to blob storage
-    $AZCOPYDIR/azcopy copy "/opt/kapetriages/$DEVICETOTRIAGE/timeline_$DEVICETOTRIAGE.csv" "SASURIHERE"
-}
+    # Create a BlobServiceClient
+    blob_service_client = BlobServiceClient.from_connection_string(connection_string)
 
-# Use itnotify wait to look for new files moved to the triage directory.
-# Format %f only prints the name of the file
-# While read ZIP stores the filename in the variable zip
-inotifywait -m -r -e create "/opt/kapetriages" --format "%f" | while read ZIP
-do
-# Use Bash string expansion to take the name of the file found and confirm the file is .zip.
-    extension="${ZIP##*.}"
-    if [[ $extension == "zip" ]]; then
-    # Might want to change this to call the function in a seperate script so it doesn't miss any new creation events?? 
-        process_triage $ZIP > output_$ZIP.log 2>&1 &
-    fi
-done
+    # Create a ContainerClient
+    container_client = blob_service_client.get_container_client(container_name)
+
+    while True:
+        # List blobs in the Azure Blob Storage container
+        blobs = list_blobs(blob_service_client, container_name)
+
+        # Check for new .zip files and download them if they don't exist locally
+        for blob_name in blobs:
+            if blob_name.endswith(".zip"):
+                # Extract the file name from the blob path
+                file_name = os.path.basename(blob_name)
+                destination_path = os.path.join(local_directory, file_name)
+
+                # Check if the file exists locally
+                if not os.path.exists(destination_path):
+                    download_blob(blob_service_client, container_name, blob_name, destination_path)
+                    print(f"Downloaded: {blob_name} to {destination_path}")
+
+        # Introduce a delay before checking for new files again
+        time.sleep(5)  # Sleep for 60 seconds (adjust as needed)
+
+if __name__ == "__main__":
+    main()
