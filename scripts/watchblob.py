@@ -1,6 +1,3 @@
-# Edit the accountname and accountkey on line 20
-# Edit the container name on line 24
-
 import time
 import os
 
@@ -22,7 +19,7 @@ def main():
     connection_string = "DefaultEndpointsProtocol=https;AccountName=ACCOUNTNAMEHERE;AccountKey=ACCOUNTKEYHERE;EndpointSuffix=core.windows.net"
 
     # Azure Blob Storage container name
-    container_name = "CONTAINERNAMEHERE"
+        container_name = "CONTAINERNAMEHERE"
 
     # Local directory to save downloaded files
     local_directory = "/opt/kapetriages/"
@@ -34,21 +31,23 @@ def main():
     container_client = blob_service_client.get_container_client(container_name)
 
     while True:
-        # List existing files in the local directory
-        local_files = os.listdir(local_directory)
-
         # List blobs in the Azure Blob Storage container
         blobs = list_blobs(blob_service_client, container_name)
 
         # Check for new .zip files and download them if they don't exist locally
         for blob_name in blobs:
-            if blob_name.endswith(".zip") and blob_name not in local_files:
-                destination_path = os.path.join(local_directory, blob_name)
-                download_blob(blob_service_client, container_name, blob_name, destination_path)
-                print(f"Downloaded: {blob_name} to {destination_path}")
+            if blob_name.endswith(".zip"):
+                # Extract the file name from the blob path
+                file_name = os.path.basename(blob_name)
+                destination_path = os.path.join(local_directory, file_name)
+
+                # Check if the file exists locally
+                if not os.path.exists(destination_path):
+                    download_blob(blob_service_client, container_name, blob_name, destination_path)
+                    print(f"Downloaded: {blob_name} to {destination_path}")
 
         # Introduce a delay before checking for new files again
-        time.sleep(60)  # Sleep for 60 seconds (adjust as needed)
+        time.sleep(5)  # Sleep for 60 seconds (adjust as needed)
 
 if __name__ == "__main__":
     main()
