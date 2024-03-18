@@ -32,6 +32,9 @@ I'd like to acknowledge and thank the following for contributing either knowledg
 ### 2. Install prerequisites on VM
 - ```sudo apt-get update```<br>
 - ```Install log2timeline```<br>
+- ```sudo add-apt-repository ppa:gift/stable```<br>
+- ```sudo apt-get update```<br>
+- ```sudo apt-get install plaso-tools```<br>
 - ```apt install python3 python3-pip unzip inotify-tools -y```<br>
 - ```pip install azure-storage-blob```<br>
 - ```wget "https://aka.ms/downloadazcopy-v10-linux" && tar -xvf downloadazcopy-v10-linux && rm downloadazcopy-v10-linux```<br>
