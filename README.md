@@ -31,7 +31,6 @@ I'd like to acknowledge and thank the following for contributing either knowledg
 
 ### 2. Install prerequisites on VM
 - ```sudo apt-get update```<br>
-- ```Install log2timeline```<br>
 - ```sudo add-apt-repository ppa:gift/stable```<br>
 - ```sudo apt-get update```<br>
 - ```sudo apt-get install plaso-tools```<br>
